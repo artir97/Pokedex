@@ -3,7 +3,7 @@ let pokemon = [];
 let currentPokemon;
 
 async function loadPokemon(){
-for(let i = 0; i < 150; i++){
+for(let i = 0; i < 30; i++){
     let url = `https://pokeapi.co/api/v2/pokemon/${i+1}`;
     let response = await fetch(url);
     currentPokemon = await response.json();   
@@ -22,19 +22,8 @@ function renderAllPokemon(){
     for (let i = 0; i < pokemon.length; i++) {
         const currentPokemon = pokemon[i];
         
-        document.getElementById('all-pokemon').innerHTML += 
-        `
-        <div id="poke-${i}" class="poke-card-small">
-        <h3 id="poke-${i}-name">${currentPokemon['name']}</h3>
-        <div class="flex">
-            <div class="types">
-                <div id="first-type-${i}">type1</div>
-                <div id="second-type-${i}">type2</div>
-            </div>
-            <img id="poke-${i}-img" src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}" alt="">
-        </div>
-        </div>
-        `;
+        document.getElementById('all-pokemon').innerHTML += miniCardHtml(i, currentPokemon);
+
     }
 }
 
@@ -66,8 +55,11 @@ function renderBackgroundsType(){
         currentSecondTypeId = document.getElementById(`second-type-${i}`);
         currentBackgroundType = colors[0][currentPokemonType][1];
 
-        currentFirstTypeId.style = 'background-color:' + currentBackgroundType;
-        currentSecondTypeId.style = 'background-color:' + currentBackgroundType;
-
+        if(pokemon[i]['types'].length == 1){
+            currentFirstTypeId.style = 'background-color:' + currentBackgroundType;
+        }else{
+            currentFirstTypeId.style = 'background-color:' + currentBackgroundType;
+            currentSecondTypeId.style = 'background-color:' + currentBackgroundType;
+        }
     }
 }
