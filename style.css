@@ -2,7 +2,10 @@ body {
     margin: 0;
 }
 
-
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
 
 
 
@@ -13,6 +16,7 @@ nav {
     /* height: 100px; */
     box-shadow: -2px 0 6px 0 rgb(0, 0, 0, 0.2);
     background-color: #e15b4d;
+    margin-bottom: 1.5rem!important;
 }
 
 .navbar-brand {
@@ -42,7 +46,27 @@ footer a:hover {
     text-decoration: none;
 }
 
-.container {
+.container-footer {
     min-width: 100vw;
     --bs-gutter-x: 0;
+}
+
+
+/* Poke Cards */
+
+/* #all-pokemon {
+} */
+
+.poke-card-small {
+    height: 150px;
+    width: 250px;
+    border-radius: 20px;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    padding: 15px;
+    padding-right: 0;
+}
+
+.poke-card-small img {
+    height: 120px;
+    margin-top: -30px;
 }
