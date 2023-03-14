@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+}
+
+
+
+
+
+
+/* NAVIGATION BAR */
+
+nav {
+    /* height: 100px; */
+    box-shadow: -2px 0 6px 0 rgb(0, 0, 0, 0.2);
+    background-color: #e15b4d;
+}
+
+.navbar-brand {
+    color: #fff;
+}
+
+.navbar-brand:hover {
+    color: #fff;
+}
+
+
+/* FOOTER */
+
+footer {
+    box-shadow: -2px 0 6px 0 rgb(0, 0, 0, 0.2);
+    background-color: #e15b4d;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+footer a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.container {
+    min-width: 100vw;
+    --bs-gutter-x: 0;
+}
