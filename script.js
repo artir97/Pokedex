@@ -1,18 +1,37 @@
 
+let pokemon = [];
 let currentPokemon;
 
 async function loadPokemon(){
- let url = 'https://pokeapi.co/api/v2/pokemon/1';
- let response = await fetch(url);
- currentPokemon = await response.json();   
+for(let i = 0; i < 9; i++){
+    let url = `https://pokeapi.co/api/v2/pokemon/${i+1}`;
+    let response = await fetch(url);
+    currentPokemon = await response.json();   
+    
+    pokemon.push(currentPokemon);
+}
+console.log(pokemon);
 
- console.log(currentPokemon);
-
- renderPokemonInfo();
+renderAllPokemon();
 }
 
 
-function renderPokemonInfo(){
-    document.getElementById('poke-1-name').innerHTML = currentPokemon['name'];
-    document.getElementById('poke-1-img').src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
+function renderAllPokemon(){
+    for (let i = 0; i < pokemon.length; i++) {
+        const currentPokemon = pokemon[i];
+        
+        document.getElementById('all-pokemon').innerHTML += 
+        `
+        <div id="poke-${i}" class="poke-card-small">
+        <h3 id="poke-${i}-name">${currentPokemon['name']}</h3>
+        <div class="flex">
+            <div class="types">
+                <div>type1</div>
+                <div>type2</div>
+            </div>
+            <img id="poke-${i}-img" src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}" alt="">
+        </div>
+        </div>
+        `;
+    }
 }
