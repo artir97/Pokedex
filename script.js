@@ -3,7 +3,7 @@ let pokemon = [];
 let currentPokemon;
 
 async function loadPokemon(){
-for(let i = 0; i < 99; i++){
+for(let i = 0; i < 150; i++){
     let url = `https://pokeapi.co/api/v2/pokemon/${i+1}`;
     let response = await fetch(url);
     currentPokemon = await response.json();   
@@ -40,31 +40,34 @@ function renderAllPokemon(){
 
 
 function renderBackgrounds(){
+    let currentPokemonType;
+    let currentBackground;
+    let currentPokemonId;
     for (let i = 0; i < pokemon.length; i++) {
+        currentPokemonType = pokemon[i]['types'][0]['type']['name']; 
+        currentBackground = colors[0][currentPokemonType][0];
+        currentPokemonId = document.getElementById(`poke-${i}`); 
 
-        if(pokemon[i]['types'][0]['type']['name'] == 'grass'){
-            document.getElementById(`poke-${i}`).style = `background-color: ${colors[0]['grass'][0]}`;
-        }else if(pokemon[i]['types'][0]['type']['name'] == 'fire'){
-            document.getElementById(`poke-${i}`).style = `background-color: ${colors[0]['fire'][0]}`;
-        }else if(pokemon[i]['types'][0]['type']['name'] == 'water'){
-            document.getElementById(`poke-${i}`).style = `background-color: ${colors[0]['water'][0]}`;
-        }
+        currentPokemonId.style = 'background-color:' + currentBackground;
     }
 
 }
 
 
 function renderBackgroundsType(){
-    for (let i = 0; i < pokemon.length; i++) {
-        if(pokemon[i]['types'][0]['type']['name'] == 'grass'){
-            document.getElementById(`first-type-${i}`).style = `background-color: ${colors[0]['grass'][1]}`;
-            document.getElementById(`second-type-${i}`).style = `background-color: ${colors[0]['grass'][1]}`;
-        }else if(pokemon[i]['types'][0]['type']['name'] == 'fire'){
-            document.getElementById(`first-type-${i}`).style = `background-color: ${colors[0]['fire'][1]}`;
-            document.getElementById(`second-type-${i}`).style = `background-color: ${colors[0]['fire'][1]}`;
-        }else if(pokemon[i]['types'][0]['type']['name'] == 'water'){
-            document.getElementById(`first-type-${i}`).style = `background-color: ${colors[0]['water'][1]}`;
-            document.getElementById(`second-type-${i}`).style = `background-color: ${colors[0]['water'][1]}`;
-        }
+    let currentPokemonType;
+    let currentFirstTypeId; 
+    let currentSecondTypeId;
+    let currentBackgroundType;
+    
+    for(let i = 0; i < pokemon.length; i++){
+        currentPokemonType = pokemon[i]['types'][0]['type']['name']; 
+        currentFirstTypeId = document.getElementById(`first-type-${i}`);  
+        currentSecondTypeId = document.getElementById(`second-type-${i}`);
+        currentBackgroundType = colors[0][currentPokemonType][1];
+
+        currentFirstTypeId.style = 'background-color:' + currentBackgroundType;
+        currentSecondTypeId.style = 'background-color:' + currentBackgroundType;
+
     }
 }
