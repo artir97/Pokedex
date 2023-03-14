@@ -7,8 +7,9 @@ body {
     justify-content: space-between;
 }
 
-
-
+.my-4{
+    margin: 0!important;
+}
 
 /* NAVIGATION BAR */
 
@@ -57,6 +58,10 @@ footer a:hover {
 #all-pokemon {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    min-width: 100vw;
+    padding: 0;
+    
 }
 
 .poke-card-small {
@@ -65,10 +70,24 @@ footer a:hover {
     border-radius: 20px;
     border: 1px solid rgb(0, 0, 0, 0.2);
     padding: 15px;
+    margin: 10px;
     padding-right: 0;
+    color: #fff;
 }
 
 .poke-card-small img {
-    height: 120px;
-    margin-top: -30px;
+    height: 110px;
+    margin-top: -20px;
+}
+
+.types div {
+    margin-bottom: 10px;
+    border-radius: 15px;
+    height: 30px;
+    width: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #000; */
 }
