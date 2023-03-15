@@ -2,9 +2,14 @@ body {
     margin: 0;
 }
 
-.flex {
+.space-between {
     display: flex;
     justify-content: space-between;
+}
+
+.space-around {
+    display: flex;
+    justify-content: space-around;
 }
 
 .my-4{
@@ -71,13 +76,19 @@ footer a:hover {
     border: 1px solid rgb(0, 0, 0, 0.2);
     padding: 15px;
     margin: 10px;
-    padding-right: 0;
     color: #fff;
 }
 
 .poke-card-small img {
     height: 110px;
     margin-top: -20px;
+}
+
+.types {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .types div {

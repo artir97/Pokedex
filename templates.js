@@ -2,8 +2,11 @@ function miniCardHtml(i, currentPokemon) {
     return (
         `
         <div id="poke-${i}" class="poke-card-small">
-        <h3 id="poke-${i}-name">${currentPokemon['name']}</h3>
-        <div class="flex">
+        <div class="space-between">
+            <h3 id="poke-${i}-name">${currentPokemon['name']}</h3>
+            <p>#${currentPokemon['id']}</p>
+        </div>
+        <div class="space-between">
             <div class="types">
                 ${renderTypes(i, currentPokemon)}
             </div>
@@ -14,14 +17,14 @@ function miniCardHtml(i, currentPokemon) {
     );
 }
 
-function renderTypes(i, currentPokemon){
-    if(currentPokemon['types'].length == 1){
+function renderTypes(i, currentPokemon) {
+    if (currentPokemon['types'].length == 1) {
         return (
             `                
             <div id="first-type-${i}">${currentPokemon['types'][0]['type']['name']}</div>
             `
         );
-    }else{
+    } else {
         return (
             `                
             <div id="first-type-${i}">${currentPokemon['types'][0]['type']['name']}</div>
