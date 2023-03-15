@@ -3,7 +3,7 @@ let pokemon = [];
 let currentPokemon;
 
 async function loadPokemon() {
-    for (let i = 0; i < 34; i++) {
+    for (let i = 0; i < 151; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
@@ -78,5 +78,7 @@ function searchPokemon(){
             pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
         }
     }
+    renderBackgrounds();
+    renderBackgroundsType();
 
 }
