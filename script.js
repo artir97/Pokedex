@@ -3,7 +3,7 @@ let pokemon = [];
 let currentPokemon;
 
 async function loadPokemon() {
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 34; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
@@ -62,4 +62,21 @@ function renderBackgroundsType() {
             currentSecondTypeId.style = 'background-color:' + currentBackgroundType;
         }
     }
+}
+
+
+function searchPokemon(){
+    let search = document.getElementById('poke-search').value;
+    search = search.toLowerCase();
+
+    let pokemonShown = document.getElementById('all-pokemon');
+    pokemonShown.innerHTML = '';
+
+    for(let i = 0; i < pokemon.length; i++){
+        let currentPokemon = pokemon[i];
+        if(currentPokemon.name.toLowerCase().includes(search)){ 
+            pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
+        }
+    }
+
 }
