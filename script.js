@@ -65,19 +65,20 @@ function renderBackgroundsType() {
 }
 
 
-function searchPokemon(){
+function searchPokemon() {
     let search = document.getElementById('poke-search').value;
     search = search.toLowerCase();
 
     let pokemonShown = document.getElementById('all-pokemon');
     pokemonShown.innerHTML = '';
 
-    for(let i = 0; i < pokemon.length; i++){
+    for (let i = 0; i < pokemon.length; i++) {
         let currentPokemon = pokemon[i];
-        if(currentPokemon.name.toLowerCase().includes(search)){ 
+        if (currentPokemon.name.toLowerCase().includes(search)) {
             pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
         }
     }
+
     renderBackgrounds();
     renderBackgroundsType();
 
