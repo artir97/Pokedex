@@ -22,8 +22,9 @@
             </a>
 
             <form class="d-flex" role="search">
-                <input onkeydown="searchPokemon()" id="poke-search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button type="button" class="btn btn-outline-light">Search</button>
+                <input id="poke-search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button onclick="searchPokemon()"  type="button" class="btn btn-outline-light">Search Loaded</button>
+                <button onclick="searchThroughAllPokemon()"  type="button" class="btn btn-outline-light">Search All</button>
             </form>
         </div>
     </nav>

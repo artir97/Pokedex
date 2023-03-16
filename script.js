@@ -1,9 +1,19 @@
 
 let pokemon = [];
+let allPokemonUrl = [];
 let currentPokemon;
 
+let urlAllPokemon = 'https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0';
+
+async function loadAllPokemon(){
+    let response = await fetch(urlAllPokemon);
+    response = response.json();
+    return response;
+}
+
 async function loadPokemon() {
-    for (let i = 0; i < 151; i++) {
+    for (let i = 0; i < 30; i++) {
+        // let url = urlAllPokemon['results'][i]['url'];
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
@@ -15,6 +25,7 @@ async function loadPokemon() {
     renderAllPokemon();
     renderBackgroundsType();
     renderBackgrounds();
+    loadAllPokemon();
 }
 
 
@@ -78,8 +89,21 @@ function searchPokemon() {
             pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
         }
     }
+}
 
-    renderBackgrounds();
-    renderBackgroundsType();
 
+async function searchThroughAllPokemon(){
+    let search = document.getElementById('poke-search').value;
+    let allPokemon = await loadAllPokemon();
+    search = search.toLowerCase();
+
+    for(let i = 0; i < allPokemon.count; i++){
+        let currentPokemon = allPokemon.results[i];
+        if(currentPokemon.name.toLowerCase().includes(search)){
+            console.log(currentPokemon);
+        }
+        
+    }
+
+    console.log(allPokemon);
 }
