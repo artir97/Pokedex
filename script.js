@@ -39,6 +39,33 @@ async function loadPokemon(){
 }
 
 
+async function searchThroughAllPokemon() {
+    let search = document.getElementById('poke-search').value;
+    search = search.toLowerCase();
+    
+    let pokemonShown = document.getElementById('all-pokemon');
+    pokemonShown.innerHTML = '';
+
+    let allPokemon = await loadAllPokemon();
+
+    for (let i = 0; i < allPokemon.count; i++) {
+        let currentPokemon = allPokemon.results[i];
+        if (currentPokemon.name.toLowerCase().includes(search)) {
+            let response = await fetch(currentPokemon['url']);
+            currentPokemon = await response.json(),
+            pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
+            renderBackgrounds(i, currentPokemon);
+            renderBackgroundsType(i, currentPokemon);
+        }
+
+    }
+
+    console.log(allPokemon);
+}
+
+
+
+
 function searchPokemon() {
     let search = document.getElementById('poke-search').value;
     search = search.toLowerCase();
@@ -55,6 +82,8 @@ function searchPokemon() {
         }
     }
 }
+
+
 
 
 function renderBackgrounds(i, currentPokemon) {
@@ -83,22 +112,6 @@ function renderBackgroundsType(i, currentPokemon) {
 
 
 
-
-async function searchThroughAllPokemon() {
-    let search = document.getElementById('poke-search').value;
-    let allPokemon = await loadAllPokemon();
-    search = search.toLowerCase();
-
-    for (let i = 0; i < allPokemon.count; i++) {
-        let currentPokemon = allPokemon.results[i];
-        if (currentPokemon.name.toLowerCase().includes(search)) {
-            console.log(currentPokemon);
-        }
-
-    }
-
-    console.log(allPokemon);
-}
 
 
 function renderAll() {

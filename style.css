@@ -70,7 +70,10 @@ footer a:hover {
 }
 
 .poke-card-small {
-    height: 150px;
+    /* height: 150px; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 250px;
     border-radius: 20px;
     border: 1px solid rgb(0, 0, 0, 0.2);
