@@ -2,6 +2,7 @@
 let pokemon = [];
 let allPokemonUrls = [];
 let currentPokemon;
+let pokemonToLoad = 30;
 
 let urlAllPokemon = 'https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0';
 
@@ -25,7 +26,7 @@ loadAllPokemonUrls();
 
 async function loadPokemon(){
     
-    for(let i = 0; i < 30; i++){
+    for(let i = 0; i < pokemonToLoad; i++){
         let url = allPokemonUrls[i];
         let response = await fetch(url);
         currentPokemon = await response.json();
@@ -36,6 +37,22 @@ async function loadPokemon(){
         renderBackgrounds(i, currentPokemon);
         renderBackgroundsType(i, currentPokemon);
     }
+}
+
+
+async function loadMorePokemon(){
+    for(let i = pokemonToLoad; i < pokemonToLoad+20; i++){
+        let url = allPokemonUrls[i];
+        let response = await fetch(url);
+        currentPokemon = await response.json();
+
+        pokemon.push(currentPokemon);
+
+        document.getElementById('all-pokemon').innerHTML += miniCardHtml(i, currentPokemon);
+        renderBackgrounds(i, currentPokemon);
+        renderBackgroundsType(i, currentPokemon);
+    }
+    pokemonToLoad += 20;
 }
 
 
@@ -64,8 +81,6 @@ async function searchThroughAllPokemon() {
 }
 
 
-
-
 function searchPokemon() {
     let search = document.getElementById('poke-search').value;
     search = search.toLowerCase();
@@ -82,8 +97,6 @@ function searchPokemon() {
         }
     }
 }
-
-
 
 
 function renderBackgrounds(i, currentPokemon) {
@@ -110,8 +123,17 @@ function renderBackgroundsType(i, currentPokemon) {
 }
 
 
-
-
+async function openPokemonCard(i){
+    let currentPokemon = await fetch(allPokemonUrls[i]);
+    currentPokemon = await currentPokemon.json();
+    
+    console.log(currentPokemon);
+    
+    document.getElementById('poke-card-big-name').innerHTML = currentPokemon['name'];
+    document.getElementById('poke-card-big-img').src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
+    
+    document.querySelector('.poke-card-big').classList.remove('d-none');
+}
 
 
 function renderAll() {

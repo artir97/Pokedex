@@ -12,8 +12,8 @@ body {
     justify-content: space-around;
 }
 
-.my-4{
-    margin: 0!important;
+.my-4 {
+    margin: 0 !important;
 }
 
 /* NAVIGATION BAR */
@@ -22,7 +22,7 @@ nav {
     /* height: 100px; */
     box-shadow: -2px 0 6px 0 rgb(0, 0, 0, 0.2);
     background-color: #e15b4d;
-    margin-bottom: 1.5rem!important;
+    margin-bottom: 1.5rem !important;
 }
 
 .navbar-brand {
@@ -32,7 +32,6 @@ nav {
 .navbar-brand:hover {
     color: #fff;
 }
-
 
 /* FOOTER */
 
@@ -66,7 +65,7 @@ footer a:hover {
     justify-content: center;
     /* min-width: 100vw; */
     padding: 0;
-    
+
 }
 
 .poke-card-small {
@@ -80,6 +79,10 @@ footer a:hover {
     padding: 15px;
     margin: 10px;
     color: #fff;
+}
+
+.poke-card-small:hover {
+    cursor: pointer;
 }
 
 .poke-card-small img {
@@ -104,4 +107,84 @@ footer a:hover {
     justify-content: center;
     align-items: center;
     /* background-color: #000; */
+}
+
+/* BIG POKEMON CARD */
+
+.poke-card-big {
+    border: 1px solid gray;
+    width: 350px;
+    /* color: #fff; */
+    /* background-color: #49d0b0; */
+    border-radius: 20px;
+    /* padding: 15px; */
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.poke-card-big-bg {
+    background-color: #49d0b0;
+    color: #fff;
+    padding: 15px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+
+
+
+}
+
+/*TODO: GOING TO GET CHANGED THROUGH JS AND REMOVED HERE */
+#type1, #type2 {
+    background-color: #61e1c9;
+    height: 30px;
+    width: 70px;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poke-card-big-content {
+    padding: 15px;
+    background-color: #fff;
+    height: 450px;
+    border-radius: 20px;
+
+    margin-top: -20px;
+}
+
+.poke-card-big-menu {
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+#poke-card-big-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    object-fit: contain;
+    height: 200px;
+    margin-bottom: -20px;
+}
+
+table {
+     width: 100%;
+}
+
+td {
+    width: 100px;
+}
+
+/* LOADING BTN */
+
+#load-btn-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }

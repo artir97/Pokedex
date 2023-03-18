@@ -1,7 +1,7 @@
 function miniCardHtml(i, currentPokemon) {
     return (
         `
-        <div id="poke-${i}" class="poke-card-small">
+        <div onclick="openPokemonCard(${i})" id="poke-${i}" class="poke-card-small">
         <div class="space-between">
             <h3 id="poke-${i}-name">${currentPokemon['name']}</h3>
             <p>#${currentPokemon['id']}</p>
