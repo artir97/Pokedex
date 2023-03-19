@@ -127,13 +127,33 @@ async function openPokemonCard(i){
     let currentPokemon = await fetch(allPokemonUrls[i]);
     currentPokemon = await currentPokemon.json();
     
-    console.log(currentPokemon);
 
     document.getElementById('poke-card-big').innerHTML = bigCardHtml(i,currentPokemon);
     document.getElementById(`poke-card-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][0];
 
     document.querySelector('.poke-card-big').classList.remove('d-none');
+
+    console.log(currentPokemon.name);
 }
+
+
+async function loadMenuContent(i, menu){
+    let currentPokemon = await fetch(allPokemonUrls[i]);
+    currentPokemon = await currentPokemon.json();
+
+    let menuContent = document.getElementById('poke-card-big-content');
+
+    if(menu == 'about'){
+        menuContent.innerHTML = menuContentAboutHtml(currentPokemon);
+    }else if(menu == 'base-stats') {
+        menuContent.innerHTML = menuContentBaseStatsHtml(currentPokemon);
+    }else if(menu == 'evolution'){
+        menuContent.innerHTML = '';
+    }else if(menu == 'moves'){
+        menuContent.innerHTML = '';
+    }
+}
+
 
 function closePokemonCard(){
     document.querySelector('.poke-card-big').classList.add('d-none');
