@@ -130,8 +130,13 @@ async function openPokemonCard(i){
     console.log(currentPokemon);
 
     document.getElementById('poke-card-big').innerHTML = bigCardHtml(i,currentPokemon);
+    document.getElementById(`poke-card-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][0];
 
     document.querySelector('.poke-card-big').classList.remove('d-none');
+}
+
+function closePokemonCard(){
+    document.querySelector('.poke-card-big').classList.add('d-none');
 }
 
 

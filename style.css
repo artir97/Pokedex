@@ -162,6 +162,11 @@ footer a:hover {
     border-bottom: 1px solid gray;
 }
 
+.icons {
+    height: 30px;
+    cursor: pointer;
+}
+
 #poke-card-big-img {
     display: flex;
     justify-content: center;
@@ -170,6 +175,10 @@ footer a:hover {
     object-fit: contain;
     height: 200px;
     margin-bottom: -20px;
+}
+
+.poke-card-big-menu-item {
+    cursor: pointer;
 }
 
 table {

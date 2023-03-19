@@ -21,7 +21,11 @@ function miniCardHtml(i, currentPokemon) {
 function bigCardHtml(i, currentPokemon) {
     return (
         `
-        <div class="poke-card-big-bg">
+        <div id="poke-card-big-${i}" class="poke-card-big-bg">
+        <div class="d-flex justify-content-between align-items-center">
+            <img onclick="closePokemonCard()" class="icons" src="img/arrow-left.png">
+            <img class="icons" src="img/star-empty.png">
+        </div>
         <div class="d-flex justify-content-between align-items-center">
             <h2>${currentPokemon['name']}</h2>
             <h4 id="poke-card-big-id">#${currentPokemon['id']}</h4>
@@ -36,10 +40,10 @@ function bigCardHtml(i, currentPokemon) {
 
     <div class="poke-card-big-content">
         <div class="poke-card-big-menu d-flex justify-content-between">
-            <div id="about" onclick="loadMenuContent('about')">About</div>
-            <div id="base-stats" onclick="loadMenuContent('base-stats')">Base Stats</div>
-            <div id="evolution" onclick="loadMenuContent('evolution')">Evolution</div>
-            <div id="moves" onclick="loadMenuContent('moves')">Moves</div>
+            <div class="poke-card-big-menu-item" id="about" onclick="loadMenuContent('about')">About</div>
+            <div class="poke-card-big-menu-item" id="base-stats" onclick="loadMenuContent('base-stats')">Base Stats</div>
+            <div class="poke-card-big-menu-item" id="evolution" onclick="loadMenuContent('evolution')">Evolution</div>
+            <div class="poke-card-big-menu-item" id="moves" onclick="loadMenuContent('moves')">Moves</div>
         </div>
 
         <div class="content-about">
@@ -47,11 +51,11 @@ function bigCardHtml(i, currentPokemon) {
                 <tbody>
                     <tr>
                         <td>Height</td>
-                        <td>${currentPokemon['height']*10}cm</td>
+                        <td>${currentPokemon['height'] * 10}cm</td>
                     </tr>
                     <tr>
                         <td>Weight</td>
-                        <td>${(currentPokemon['weight']/10).toFixed(1)}kg</td>
+                        <td>${(currentPokemon['weight'] / 10).toFixed(1)}kg</td>
                     </tr>
                     <tr>
                         <td>Abilities</td>
