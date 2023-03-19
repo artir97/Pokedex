@@ -128,10 +128,9 @@ async function openPokemonCard(i){
     currentPokemon = await currentPokemon.json();
     
     console.log(currentPokemon);
-    
-    document.getElementById('poke-card-big-name').innerHTML = currentPokemon['name'];
-    document.getElementById('poke-card-big-img').src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
-    
+
+    document.getElementById('poke-card-big').innerHTML = bigCardHtml(i,currentPokemon);
+
     document.querySelector('.poke-card-big').classList.remove('d-none');
 }
 
