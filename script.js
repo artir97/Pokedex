@@ -21,13 +21,14 @@ async function loadAllPokemonUrls() {
         allPokemonUrls.push(response.results[i].url);
     }
 }
-loadAllPokemonUrls();
+
 
 
 async function loadPokemon(){
-    
+    await loadAllPokemonUrls();
+
     for(let i = 0; i < pokemonToLoad; i++){
-        let url = allPokemonUrls[i];
+        let url = allPokemonUrls[i]; // url in array sehr unnötig, da sowieso gefetcht wird  
         let response = await fetch(url);
         currentPokemon = await response.json();
 
