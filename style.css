@@ -137,7 +137,8 @@ footer a:hover {
     right: calc(50% - 230px);
 }
 
-#previous-pokemon, #next-pokemon {
+#previous-pokemon,
+#next-pokemon {
     height: 50px;
     width: 50px;
 
@@ -193,7 +194,7 @@ footer a:hover {
 }
 
 table {
-     width: 100%;
+    width: 100%;
 }
 
 td {

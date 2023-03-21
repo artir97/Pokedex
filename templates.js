@@ -19,10 +19,11 @@ function miniCardHtml(i, currentPokemon) {
 
 
 function bigCardHtml(i, currentPokemon) {
+    let color = colors[0][currentPokemon['types'][0]['type']['name']][0];
     return (
         `
-        <button id = "previous-pokemon"> < </button>
-        <button id = "next-pokemon"> > </button>
+        <button style="background-color:${color}" onclick="loadPreviousPokemon(${i})" id = "previous-pokemon"> < </button>
+        <button style="background-color:${color}" onclick="loadNextPokemon(${i})" id = "next-pokemon"> > </button>
 
         <div id="poke-card-big-${i}" class="poke-card-big-bg">
         <div class="d-flex justify-content-between align-items-center">
@@ -42,7 +43,7 @@ function bigCardHtml(i, currentPokemon) {
     </div>
 
     <div class="poke-card-big-content">
-        <div class="poke-card-big-menu d-flex justify-content-between">
+        <div style="border-bottom: 3px solid ${color} ;" class="poke-card-big-menu d-flex justify-content-between">
             <div class="poke-card-big-menu-item" id="about" onclick="loadMenuContent(${i},'about')">About</div>
             <div class="poke-card-big-menu-item" id="base-stats" onclick="loadMenuContent(${i},'base-stats')">Base Stats</div>
             <div class="poke-card-big-menu-item" id="evolution" onclick="loadMenuContent(${i},'evolution')">Evolution</div>
@@ -192,7 +193,7 @@ function menuContentBaseStatsHtml(currentPokemon) {
 }
 
 
-function menuContentEvolutionHtml(currentPokemon){
+function menuContentEvolutionHtml(currentPokemon) {
     return (
         `
         evolution - coming soon
@@ -201,7 +202,7 @@ function menuContentEvolutionHtml(currentPokemon){
 }
 
 
-function menuContentMovesHtml(currentPokemon){
+function menuContentMovesHtml(currentPokemon) {
     return (
         `
         <div>
@@ -212,10 +213,10 @@ function menuContentMovesHtml(currentPokemon){
 }
 
 
-function renderMoves(currentPokemon){
+function renderMoves(currentPokemon) {
     let allMoves = '';
 
-    for(let i = 0; i < currentPokemon['moves'].length; i++){
+    for (let i = 0; i < currentPokemon['moves'].length; i++) {
         allMoves += `<div>${currentPokemon['moves'][i]['move']['name']}</div>`;
     }
 
