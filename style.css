@@ -125,6 +125,28 @@ footer a:hover {
     transform: translate(-50%, -50%);
 }
 
+#previous-pokemon {
+    position: fixed;
+    top: calc(50% - 25px);
+    left: calc(50% - 230px);
+}
+
+#next-pokemon {
+    position: fixed;
+    top: calc(50% - 25px);
+    right: calc(50% - 230px);
+}
+
+#previous-pokemon, #next-pokemon {
+    height: 50px;
+    width: 50px;
+
+    border-radius: 20px;
+    border: 1px solid gray;
+    color: #fff;
+    background-color: #000;
+}
+
 .poke-card-big-bg {
     background-color: #49d0b0;
     color: #fff;
@@ -135,7 +157,6 @@ footer a:hover {
 
 
 }
-  
 
 .poke-card-big-content {
     padding: 15px;
@@ -143,6 +164,8 @@ footer a:hover {
     height: 320px;
     border-radius: 20px;
     margin-top: -20px;
+
+    overflow: auto;
 }
 
 .poke-card-big-menu {

@@ -148,10 +148,20 @@ async function loadMenuContent(i, menu){
     }else if(menu == 'base-stats') {
         menuContent.innerHTML = menuContentBaseStatsHtml(currentPokemon);
     }else if(menu == 'evolution'){
-        menuContent.innerHTML = '';
+        menuContent.innerHTML = menuContentEvolutionHtml(currentPokemon);
     }else if(menu == 'moves'){
-        menuContent.innerHTML = '';
+        menuContent.innerHTML = menuContentMovesHtml(currentPokemon);
     }
+}
+
+
+async function loadNextPokemon(){
+    
+}
+
+
+async function loadPreviousPokemon(){
+
 }
 
 

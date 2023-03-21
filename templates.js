@@ -21,6 +21,9 @@ function miniCardHtml(i, currentPokemon) {
 function bigCardHtml(i, currentPokemon) {
     return (
         `
+        <button id = "previous-pokemon"> < </button>
+        <button id = "next-pokemon"> > </button>
+
         <div id="poke-card-big-${i}" class="poke-card-big-bg">
         <div class="d-flex justify-content-between align-items-center">
             <img onclick="closePokemonCard()" class="icons" src="img/arrow-left.png">
@@ -90,6 +93,7 @@ function menuContentAboutHtml(currentPokemon) {
 
 
 function menuContentBaseStatsHtml(currentPokemon) {
+    // TODO: only leave actual html in a template
     let maxPoints = 120;
     let maxPointsTotal = 720;
 
@@ -187,8 +191,35 @@ function menuContentBaseStatsHtml(currentPokemon) {
     );
 }
 
-function bigCardMenuItemsHtml(i, currentPokemon) {
 
+function menuContentEvolutionHtml(currentPokemon){
+    return (
+        `
+        evolution - coming soon
+        `
+    );
+}
+
+
+function menuContentMovesHtml(currentPokemon){
+    return (
+        `
+        <div>
+            ${renderMoves(currentPokemon)}
+        </div>
+        `
+    );
+}
+
+
+function renderMoves(currentPokemon){
+    let allMoves = '';
+
+    for(let i = 0; i < currentPokemon['moves'].length; i++){
+        allMoves += `<div>${currentPokemon['moves'][i]['move']['name']}</div>`;
+    }
+
+    return allMoves;
 }
 
 
