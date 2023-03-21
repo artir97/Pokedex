@@ -93,15 +93,21 @@ function menuContentBaseStatsHtml(currentPokemon) {
     let maxPoints = 120;
     let maxPointsTotal = 720;
 
-    let hpPercent =  ((currentPokemon['stats'][0]['base_stat'])/maxPoints).toFixed(2) * 100;
-    let atkPercent = ((currentPokemon['stats'][1]['base_stat'])/maxPoints).toFixed(2) * 100;
-    let defPercent = ((currentPokemon['stats'][2]['base_stat'])/maxPoints).toFixed(2) * 100;
-    let spAPercent = ((currentPokemon['stats'][3]['base_stat'])/maxPoints).toFixed(2) * 100;
-    let spDPercent = ((currentPokemon['stats'][4]['base_stat'])/maxPoints).toFixed(2) * 100;
-    let spdPercent = ((currentPokemon['stats'][5]['base_stat'])/maxPoints).toFixed(2) * 100;
+    let hpPercent = ((currentPokemon['stats'][0]['base_stat']) / maxPoints).toFixed(2) * 100;
+    let atkPercent = ((currentPokemon['stats'][1]['base_stat']) / maxPoints).toFixed(2) * 100;
+    let defPercent = ((currentPokemon['stats'][2]['base_stat']) / maxPoints).toFixed(2) * 100;
+    let spAPercent = ((currentPokemon['stats'][3]['base_stat']) / maxPoints).toFixed(2) * 100;
+    let spDPercent = ((currentPokemon['stats'][4]['base_stat']) / maxPoints).toFixed(2) * 100;
+    let spdPercent = ((currentPokemon['stats'][5]['base_stat']) / maxPoints).toFixed(2) * 100;
 
-    let totalPoints = (hpPercent + atkPercent + defPercent + spAPercent + spDPercent + spdPercent);
-    let totalPercent = (totalPoints/maxPointsTotal).toFixed(2) * 100;
+    let totalPoints = (currentPokemon['stats'][0]['base_stat'] +
+        currentPokemon['stats'][1]['base_stat'] +
+        currentPokemon['stats'][2]['base_stat'] +
+        currentPokemon['stats'][3]['base_stat'] +
+        currentPokemon['stats'][4]['base_stat'] +
+        currentPokemon['stats'][5]['base_stat']
+    );
+    let totalPercent = (totalPoints / maxPointsTotal).toFixed(2) * 100;
 
     console.log(hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent);
 

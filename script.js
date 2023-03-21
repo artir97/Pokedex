@@ -23,7 +23,6 @@ async function loadAllPokemonUrls() {
 }
 
 
-
 async function loadPokemon(){
     await loadAllPokemonUrls();
 
