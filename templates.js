@@ -28,7 +28,7 @@ function bigCardHtml(i, currentPokemon) {
         <div id="poke-card-big-${i}" class="poke-card-big-bg">
         <div class="d-flex justify-content-between align-items-center">
             <img onclick="closePokemonCard()" class="icons" src="img/arrow-left.png">
-            <img class="icons" src="img/star-empty.png">
+            <img class="icons" src="img/heart-empty.png">
         </div>
         <div class="d-flex justify-content-between align-items-center">
             <h2>${currentPokemon['name']}</h2>

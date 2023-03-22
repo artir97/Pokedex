@@ -16,6 +16,26 @@ body {
     margin: 0 !important;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #e15b4d;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: red;
+}
+
 /* NAVIGATION BAR */
 
 nav {
@@ -97,7 +117,8 @@ footer a:hover {
     align-items: center;
 }
 
-.types div, .types-big div {
+.types div,
+.types-big div {
     margin-bottom: 10px;
     border-radius: 15px;
     height: 30px;
