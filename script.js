@@ -2,7 +2,7 @@
 let pokemon = [];
 let allPokemonUrls = [];
 let currentPokemon;
-let pokemonToLoad = 30;
+let pokemonToLoad = 50;
 
 let urlAllPokemon = 'https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0';
 

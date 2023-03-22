@@ -53,17 +53,10 @@ function bigCardHtml(i, currentPokemon) {
             <div class="poke-card-big-menu-item" id="moves" onclick="loadMenuContent(${i},'moves')">Moves</div>
         </div>
 
-        <div id="poke-card-big-content">
+        <div class="content-under-menu" id="poke-card-big-content">
             ${menuContentAboutHtml(currentPokemon)}
         </div>
-
-        <div class="content-evolution">
-
-        </div>
-
-        <div class="content-moves">
-
-        </div>
+    </div>
         `
     );
 }
@@ -71,25 +64,27 @@ function bigCardHtml(i, currentPokemon) {
 function menuContentAboutHtml(currentPokemon) {
     return (
         `
-        <div class="content-about">
-        <table>
-            <tbody>
-                <tr>
-                    <td>Height</td>
-                    <td>${currentPokemon['height'] * 10}cm</td>
-                </tr>
-                <tr>
-                    <td>Weight</td>
-                    <td>${(currentPokemon['weight'] / 10).toFixed(1)}kg</td>
-                </tr>
-                <tr>
-                    <td>Abilities</td>
-                    <td>
-                        ${renderAbilities(currentPokemon)}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <div class="content-about">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Height</td>
+                        <td>${currentPokemon['height'] * 10}cm</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td>${(currentPokemon['weight'] / 10).toFixed(1)}kg</td>
+                    </tr>
+                    <tr>
+                        <td>Abilities</td>
+                        <td>
+                            ${renderAbilities(currentPokemon)}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
         </div>
         `
     );
@@ -208,7 +203,7 @@ function menuContentEvolutionHtml(currentPokemon) {
 function menuContentMovesHtml(currentPokemon) {
     return (
         `
-        <div>
+        <div style="text-align: center;">
             ${renderMoves(currentPokemon)}
         </div>
         `
