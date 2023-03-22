@@ -78,6 +78,8 @@ async function searchThroughAllPokemon() {
     }
 
     console.log(allPokemon);
+    document.getElementById('load-btn-div').style = 'display: none';
+
 }
 
 
@@ -96,6 +98,7 @@ function searchPokemon() {
             renderBackgroundsType(i, currentPokemon);
         }
     }
+    document.getElementById('load-btn-div').style = 'display: none';
 }
 
 
