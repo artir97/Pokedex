@@ -130,13 +130,17 @@ async function openPokemonCard(i) {
     let currentPokemon = await fetch(allPokemonUrls[i]);
     currentPokemon = await currentPokemon.json();
 
-
     document.getElementById('poke-card-big').innerHTML = bigCardHtml(i, currentPokemon);
     document.getElementById(`poke-card-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][0];
 
-    document.querySelector('.poke-card-big').classList.remove('d-none');
+    if (currentPokemon['types'].length == 1) {
+        document.getElementById(`first-type-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][1];
+    } else {
+        document.getElementById(`first-type-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][1];
+        document.getElementById(`second-type-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][1];
+    }
 
-    console.log(currentPokemon.name);
+    document.querySelector('.poke-card-big').classList.remove('d-none');
 }
 
 

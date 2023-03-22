@@ -35,7 +35,7 @@ function bigCardHtml(i, currentPokemon) {
             <h4 id="poke-card-big-id">#${currentPokemon['id']}</h4>
         </div>
         <div id="poke-card-big-types" class="types-big d-flex">
-            ${renderTypes(i, currentPokemon)}
+            ${renderTypesBigCard(i, currentPokemon)}
         </div>
         <div>
             <img id="poke-card-big-img" src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}">
@@ -254,6 +254,24 @@ function renderTypes(i, currentPokemon) {
             `                
             <div id="first-type-${i}">${currentPokemon['types'][0]['type']['name']}</div>
             <div id="second-type-${i}">${currentPokemon['types'][1]['type']['name']}</div>
+
+            `
+        );
+    }
+}
+
+function renderTypesBigCard(i, currentPokemon) {
+    if (currentPokemon['types'].length == 1) {
+        return (
+            `                
+            <div id="first-type-big-${i}">${currentPokemon['types'][0]['type']['name']}</div>
+            `
+        );
+    } else {
+        return (
+            `                
+            <div id="first-type-big-${i}">${currentPokemon['types'][0]['type']['name']}</div>
+            <div class="mx-1" id="second-type-big-${i}">${currentPokemon['types'][1]['type']['name']}</div>
 
             `
         );

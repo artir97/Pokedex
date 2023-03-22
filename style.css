@@ -97,7 +97,7 @@ footer a:hover {
     align-items: center;
 }
 
-.types div {
+.types div, .types-big div {
     margin-bottom: 10px;
     border-radius: 15px;
     height: 30px;
