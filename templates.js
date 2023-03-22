@@ -26,6 +26,8 @@ function bigCardHtml(i, currentPokemon) {
         <button style="background-color:${color}" onclick="loadPreviousPokemon(${i})" id = "previous-pokemon"> < </button>
         <button style="background-color:${color}" onclick="loadNextPokemon(${i})" id = "next-pokemon"> > </button>
 
+        <img class="poke-card-big-bg-img" src="img/pokeball-bg-4.png">
+
         <div id="poke-card-big-${i}" class="poke-card-big-bg">
         <div class="d-flex justify-content-between align-items-center">
             <img onclick="closePokemonCard()" class="icons" src="img/arrow-left.png">
