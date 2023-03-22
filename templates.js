@@ -2,16 +2,17 @@ function miniCardHtml(i, currentPokemon) {
     return (
         `
         <div onclick="openPokemonCard(${i})" id="poke-${i}" class="poke-card-small">
-        <div class="space-between">
-            <h3 id="poke-${i}-name">${capitalizeFirstLetter(currentPokemon['name'])}</h3>
-            <p>#${pokeIdNr(currentPokemon['id'])}</p>
-        </div>
-        <div class="space-between">
-            <div class="types">
-                ${renderTypes(i, currentPokemon)}
+            <img class="poke-card-mini-bg" src="img/pokeball-bg-4.png">
+            <div class="space-between">
+                <h3 id="poke-${i}-name">${capitalizeFirstLetter(currentPokemon['name'])}</h3>
+                <p>#${pokeIdNr(currentPokemon['id'])}</p>
             </div>
-            <img id="poke-${i}-img" src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}" alt="">
-        </div>
+            <div class="space-between">
+                <div class="types">
+                    ${renderTypes(i, currentPokemon)}
+                </div>
+                <img class="poke-card-mini-pokemon-img" id="poke-${i}-img" src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}" alt="">
+            </div>
         </div>
         `
     );

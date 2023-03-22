@@ -16,6 +16,10 @@ body {
     margin: 0 !important;
 }
 
+h3 {
+    z-index: 1;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -89,6 +93,8 @@ footer a:hover {
 }
 
 .poke-card-small {
+    position: relative;
+
     /* height: 150px; */
     display: flex;
     justify-content: center;
@@ -101,11 +107,24 @@ footer a:hover {
     color: #fff;
 }
 
+.poke-card-mini-bg {
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+    mix-blend-mode: luminosity;
+    opacity: 70%;
+    height: 130px;
+    opacity: 40%;
+    transform: rotate(-30deg);
+    
+}
+
 .poke-card-small:hover {
     cursor: pointer;
 }
 
-.poke-card-small img {
+.poke-card-mini-pokemon-img {
+    z-index: 1;
     height: 110px;
     margin-top: -20px;
 }
