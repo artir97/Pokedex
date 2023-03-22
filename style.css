@@ -136,7 +136,7 @@ footer {
 }
 
 .poke-card-mini-pokemon-img:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
     transition: 125ms;
     z-index: 6;
 }
@@ -167,7 +167,7 @@ footer {
     border: 1px solid gray;
     width: 350px;
     border-radius: 20px;
-    z-index: 7;
+    z-index: 20;
 
     position: fixed;
     top:  50%;
