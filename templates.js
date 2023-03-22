@@ -3,8 +3,8 @@ function miniCardHtml(i, currentPokemon) {
         `
         <div onclick="openPokemonCard(${i})" id="poke-${i}" class="poke-card-small">
         <div class="space-between">
-            <h3 id="poke-${i}-name">${currentPokemon['name']}</h3>
-            <p>#${currentPokemon['id']}</p>
+            <h3 id="poke-${i}-name">${capitalizeFirstLetter(currentPokemon['name'])}</h3>
+            <p>#${pokeIdNr(currentPokemon['id'])}</p>
         </div>
         <div class="space-between">
             <div class="types">
@@ -28,11 +28,11 @@ function bigCardHtml(i, currentPokemon) {
         <div id="poke-card-big-${i}" class="poke-card-big-bg">
         <div class="d-flex justify-content-between align-items-center">
             <img onclick="closePokemonCard()" class="icons" src="img/arrow-left.png">
-            <img class="icons" src="img/heart-empty.png">
+            <img onclick="comingSoon()" class="icons" src="img/heart-empty.png">
         </div>
         <div class="d-flex justify-content-between align-items-center">
-            <h2>${currentPokemon['name']}</h2>
-            <h4 id="poke-card-big-id">#${currentPokemon['id']}</h4>
+            <h2>${capitalizeFirstLetter(currentPokemon['name'])}</h2>
+            <h4 id="poke-card-big-id">#${pokeIdNr(currentPokemon['id'])}</h4>
         </div>
         <div id="poke-card-big-types" class="types-big d-flex">
             ${renderTypesBigCard(i, currentPokemon)}

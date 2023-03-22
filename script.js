@@ -178,9 +178,24 @@ function closePokemonCard() {
 }
 
 
+function pokeIdNr(i){   
+    let str = i.toString();
+    while(str.length<4)str = "0"+str;
+    return str;
+}
+
 function renderAll() {
     renderAllPokemon();
     renderBackgroundsType();
     renderBackgrounds();
     loadAllPokemon();
+}
+
+
+function comingSoon(){
+    alert('This functionality doesn\'t exist yet - it will be available soon');
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
