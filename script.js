@@ -102,7 +102,7 @@ async function openPokemonCard(i) {
     let { colorCard, colorType } = getColors(currentPokemon);
 
     createBigPokemonCard(i, currentPokemon);
-    addColors(i, colorCard, colorType);
+    addColors(i, colorCard, colorType, currentPokemon);
 }
 
 
@@ -199,10 +199,11 @@ function createBigPokemonCard(i, currentPokemon) {
 }
 
 
-function addColors(i, colorCard, colorType) {
+function addColors(i, colorCard, colorType, currentPokemon) {
+    console.log(currentPokemon);
     document.getElementById(`poke-card-big-${i}`).style = 'background-color:' + colorCard;
+    
     document.getElementById(`first-type-big-${i}`).style = 'background-color:' + colorType;
-
     if (currentPokemon['types'].length > 1) {
         document.getElementById(`second-type-big-${i}`).style = 'background-color:' + colorType;
     }
