@@ -24,18 +24,24 @@ async function loadAllPokemonUrls() {
 
 
 async function loadPokemon() {
+    document.getElementById('load-more-pokemon-btn').classList.add('d-none');
     await loadAllPokemonUrls();
     for (let i = 0; i < pokemonToLoad; i++) {
         await loadOnePokemon(i);
     }
+    document.getElementById('load-more-pokemon-btn').classList.remove('d-none');
+
 }
 
 
 async function loadMorePokemon() {
+    document.getElementById('load-more-pokemon-btn').classList.add('d-none');
     for (let i = pokemonToLoad; i < pokemonToLoad + 20; i++) {
         await loadOnePokemon(i);
     }
     pokemonToLoad += 20;
+
+    document.getElementById('load-more-pokemon-btn').classList.remove('d-none');
 }
 
 
@@ -200,7 +206,6 @@ function createBigPokemonCard(i, currentPokemon) {
 
 
 function addColors(i, colorCard, colorType, currentPokemon) {
-    console.log(currentPokemon);
     document.getElementById(`poke-card-big-${i}`).style = 'background-color:' + colorCard;
     
     document.getElementById(`first-type-big-${i}`).style = 'background-color:' + colorType;
