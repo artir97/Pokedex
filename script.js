@@ -7,6 +7,7 @@ let pokemonToLoad = 50;
 let urlAllPokemon = 'https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0';
 
 
+// LOAD POKEMON
 async function loadAllPokemon() {
     let response = await fetch(urlAllPokemon);
     response = await response.json();
@@ -24,7 +25,6 @@ async function loadAllPokemonUrls() {
 
 async function loadPokemon() {
     await loadAllPokemonUrls();
-
     for (let i = 0; i < pokemonToLoad; i++) {
         await loadOnePokemon(i);
     }
@@ -49,6 +49,30 @@ async function loadOnePokemon(i) {
 }
 
 
+// SEARCH POKEMON
+function searchThroughPokemon() {
+    let search = returnSearch();
+    let pokemonShown = document.getElementById('all-pokemon');
+    showLocalSearchedPokemon(search, pokemonShown);
+}
+
+
+async function searchThroughAllPokemon() {
+    let search = returnSearch();
+    let pokemonShown = document.getElementById('all-pokemon');
+    let allPokemon = await loadAllPokemon();
+    await showApiSearchedPokemon(search, pokemonShown, allPokemon);
+}
+
+
+function returnSearch() {
+    let search = document.getElementById('poke-search').value;
+    search = search.toLowerCase();
+    return search
+}
+
+
+// SHOW POKEMON
 function showMiniCards(i) {
     document.getElementById('all-pokemon').innerHTML += miniCardHtml(i, currentPokemon);
     renderBackgrounds(i, currentPokemon);
@@ -56,19 +80,16 @@ function showMiniCards(i) {
 }
 
 
-function returnSearch(){
-    let search = document.getElementById('poke-search').value;
-    search = search.toLowerCase();
-    return search
+async function openPokemonCard(i) {
+    let currentPokemon = await loadCurrentPokemonBigCard(i);
+    let { colorCard, colorType } = getColors(currentPokemon);
+
+    createBigPokemonCard(i, currentPokemon);
+    addColors(i, colorCard, colorType);
 }
 
 
-async function searchThroughAllPokemon() {
-    let search = returnSearch();
-
-    let pokemonShown = document.getElementById('all-pokemon');
-    let allPokemon = await loadAllPokemon();
-
+async function showApiSearchedPokemon(search, pokemonShown, allPokemon) {
     if (search.trim() == '') {
         alert('No empty search allowed');
     } else {
@@ -79,26 +100,16 @@ async function searchThroughAllPokemon() {
             let currentPokemon = allPokemon.results[i];
             if (currentPokemon.name.toLowerCase().includes(search)) {
                 let response = await fetch(currentPokemon['url']);
-                currentPokemon = await response.json(),
-                    pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
-                renderBackgrounds(i, currentPokemon);
-                renderBackgroundsType(i, currentPokemon);
-            }
+                currentPokemon = await response.json();
 
+                createSearchedMiniCards(pokemonShown, i, currentPokemon);
+            }
         }
     }
 }
 
 
-function searchPokemon() {
-    let search = returnSearch();
-
-
-
-    let pokemonShown = document.getElementById('all-pokemon');
- 
-
-
+function showLocalSearchedPokemon(search, pokemonShown) {
     if (search.trim() == '') {
         alert('No empty search allowed');
     } else {
@@ -107,14 +118,17 @@ function searchPokemon() {
         for (let i = 0; i < pokemon.length; i++) {
             let currentPokemon = pokemon[i];
             if (currentPokemon.name.toLowerCase().includes(search)) {
-                pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
-                renderBackgrounds(i, currentPokemon);
-                renderBackgroundsType(i, currentPokemon);
+                createSearchedMiniCards(pokemonShown, i, currentPokemon);
             }
         }
     }
+}
 
 
+function createSearchedMiniCards(pokemonShown, i, currentPokemon) {
+    pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
+    renderBackgrounds(i, currentPokemon);
+    renderBackgroundsType(i, currentPokemon);
 }
 
 
@@ -142,30 +156,45 @@ function renderBackgroundsType(i, currentPokemon) {
 }
 
 
-async function openPokemonCard(i) {
+async function loadCurrentPokemonBigCard(i) {
     let currentPokemon = await fetch(allPokemonUrls[i]);
     currentPokemon = await currentPokemon.json();
+    return currentPokemon;
+}
 
+
+function createBigPokemonCard(i, currentPokemon) {
     document.getElementById('poke-card-big').innerHTML = bigCardHtml(i, currentPokemon);
-    document.getElementById(`poke-card-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][0];
-
-    if (currentPokemon['types'].length == 1) {
-        document.getElementById(`first-type-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][1];
-    } else {
-        document.getElementById(`first-type-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][1];
-        document.getElementById(`second-type-big-${i}`).style = 'background-color:' + colors[0][currentPokemon['types'][0]['type']['name']][1];
-    }
-
     document.querySelector('.poke-card-big').classList.remove('d-none');
 }
 
 
-async function loadMenuContent(i, menu) {
-    let currentPokemon = await fetch(allPokemonUrls[i]);
-    currentPokemon = await currentPokemon.json();
+function addColors(i, colorCard, colorType) {
+    document.getElementById(`poke-card-big-${i}`).style = 'background-color:' + colorCard;
+    document.getElementById(`first-type-big-${i}`).style = 'background-color:' + colorType;
 
+    if (currentPokemon['types'].length > 1) {
+        document.getElementById(`second-type-big-${i}`).style = 'background-color:' + colorType;
+    }
+}
+
+
+function getColors(currentPokemon) {
+    let colorCard = colors[0][currentPokemon['types'][0]['type']['name']][0];
+    let colorType = colors[0][currentPokemon['types'][0]['type']['name']][1];
+    return { colorCard, colorType };
+}
+
+
+async function loadMenuContent(i, menu) {
+    let currentPokemon = await loadCurrentPokemonBigCard(i);
     let menuContent = document.getElementById('poke-card-big-content');
 
+    returnMenuContent(menu, menuContent, currentPokemon);
+}
+
+
+function returnMenuContent(menu, menuContent, currentPokemon) {
     if (menu == 'about') {
         menuContent.innerHTML = menuContentAboutHtml(currentPokemon);
     } else if (menu == 'base-stats') {
@@ -188,7 +217,6 @@ function loadNextPokemon(i) {
 }
 
 
-
 function closePokemonCard() {
     document.querySelector('.poke-card-big').classList.add('d-none');
 }
@@ -200,18 +228,20 @@ function pokeIdNr(i) {
     return str;
 }
 
-function renderAll() {
-    renderAllPokemon();
-    renderBackgroundsType();
-    renderBackgrounds();
-    loadAllPokemon();
-}
-
 
 function comingSoon() {
     alert('This functionality doesn\'t exist yet - it will be available soon');
 }
 
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
+function renderAll() {
+    renderAllPokemon();
+    renderBackgroundsType();
+    renderBackgrounds();
+    loadAllPokemon();
 }
