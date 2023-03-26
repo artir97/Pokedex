@@ -61,6 +61,7 @@ function bigCardHtml(i, currentPokemon) {
     );
 }
 
+
 function menuContentAboutHtml(currentPokemon) {
     return (
         `
@@ -92,30 +93,7 @@ function menuContentAboutHtml(currentPokemon) {
 
 
 function menuContentBaseStatsHtml(currentPokemon) {
-    // TODO: only leave actual html in a template
-    let maxPoints = 120;
-    let maxPointsTotal = 720;
-
-    let hpPercent = ((currentPokemon['stats'][0]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let atkPercent = ((currentPokemon['stats'][1]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let defPercent = ((currentPokemon['stats'][2]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let spAPercent = ((currentPokemon['stats'][3]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let spDPercent = ((currentPokemon['stats'][4]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let spdPercent = ((currentPokemon['stats'][5]['base_stat']) / maxPoints).toFixed(2) * 100;
-
-    let totalPoints = (currentPokemon['stats'][0]['base_stat'] +
-        currentPokemon['stats'][1]['base_stat'] +
-        currentPokemon['stats'][2]['base_stat'] +
-        currentPokemon['stats'][3]['base_stat'] +
-        currentPokemon['stats'][4]['base_stat'] +
-        currentPokemon['stats'][5]['base_stat']
-    );
-    let totalPercent = (totalPoints / maxPointsTotal).toFixed(2) * 100;
-
-    console.log(hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent);
-
-    let colorBar = colors[0][currentPokemon['types'][0]['type']['name']][0];
-
+    let { hpPercent, colorBar, atkPercent, defPercent, spAPercent, spDPercent, spdPercent, totalPoints, totalPercent } = baseStats(currentPokemon);
 
     return (
         `   
@@ -189,6 +167,7 @@ function menuContentBaseStatsHtml(currentPokemon) {
       `
     );
 }
+
 
 
 function menuContentEvolutionHtml(currentPokemon) {
