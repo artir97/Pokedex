@@ -52,7 +52,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 19;
 }
 
 .navbar-brand {
@@ -334,4 +334,73 @@ td {
     padding-top: 100px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+
+/* MEDIA QUERIES */
+@media(max-height: 830px) {
+    .poke-card-big {
+        top: 52%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media(max-width: 650px){
+
+    .container-fluid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #all-pokemon {
+        padding-top: 120px;
+    }
+
+}
+
+@media(max-width: 500px){
+    .nav-right-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #poke-search {
+        width: 200px;
+    }
+
+    button{
+        width: 200px;
+    }
+
+    #all-pokemon {
+        padding-top: 185px;
+    }
+
+    .hide-500px {
+        display: none;
+    }
+}
+
+
+@media(max-width: 400px){
+    .none {
+        display: none;
+    }
+}
+
+
+@media(max-width: 365px){
+    .poke-card-big {
+        width: 270px;
+    }
+    #poke-card-big-img {
+        height: 150px;
+    }
+
+    .poke-card-big-bg-img {
+        height: 200px;
+        left: 35px;
+    }
 }

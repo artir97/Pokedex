@@ -202,7 +202,6 @@ function baseStats(currentPokemon) {
     let maxPoints = 120;
     let maxPointsTotal = 720;
     let totalPoints = 0;
-    
     let { hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent } = initBaseStats(currentPokemon, maxPoints);
 
     for(let i = 0; i < currentPokemon['stats'].length; i++){

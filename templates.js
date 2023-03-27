@@ -20,36 +20,39 @@ function miniCardHtml(i, currentPokemon) {
 
 
 function bigCardHtml(i, currentPokemon) {
+    // TODO: either fix or remove evolution
     let color = colors[0][currentPokemon['types'][0]['type']['name']][0];
     return (
         `
-        <button style="background-color:${color}" onclick="loadPreviousPokemon(${i})" id = "previous-pokemon"> < </button>
-        <button style="background-color:${color}" onclick="loadNextPokemon(${i})" id = "next-pokemon"> > </button>
+        <button class="hide-500px" style="background-color:${color}" onclick="loadPreviousPokemon(${i})" id = "previous-pokemon"> < </button>
+        <button class="hide-500px" style="background-color:${color}" onclick="loadNextPokemon(${i})" id = "next-pokemon"> > </button>
 
         <img class="poke-card-big-bg-img" src="img/pokeball-bg-4.png">
 
         <div id="poke-card-big-${i}" class="poke-card-big-bg">
-        <div class="d-flex justify-content-between align-items-center">
-            <img onclick="closePokemonCard()" class="icons" src="img/arrow-left.png">
-            <img onclick="comingSoon()" class="icons" src="img/heart-empty.png">
+        <button  style="background-color:${color}" onclick="loadPreviousPokemon(${i})" id = "previous-pokemon"> < </button>
+        <button  style="background-color:${color}" onclick="loadNextPokemon(${i})" id = "next-pokemon"> > </button>
+            <div class="d-flex justify-content-between align-items-center">
+                <img onclick="closePokemonCard()" class="icons" src="img/arrow-left.png">
+                <img onclick="comingSoon()" class="icons" src="img/heart-empty.png">
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>${capitalizeFirstLetter(currentPokemon['name'])}</h2>
+                <h4 id="poke-card-big-id">#${pokeIdNr(currentPokemon['id'])}</h4>
+            </div>
+            <div id="poke-card-big-types" class="types-big d-flex">
+                ${renderTypesBigCard(i, currentPokemon)}
+            </div>
+            <div>
+                <img id="poke-card-big-img" src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}">
+            </div>
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-            <h2>${capitalizeFirstLetter(currentPokemon['name'])}</h2>
-            <h4 id="poke-card-big-id">#${pokeIdNr(currentPokemon['id'])}</h4>
-        </div>
-        <div id="poke-card-big-types" class="types-big d-flex">
-            ${renderTypesBigCard(i, currentPokemon)}
-        </div>
-        <div>
-            <img id="poke-card-big-img" src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}">
-        </div>
-    </div>
 
     <div class="poke-card-big-content">
         <div style="border-bottom: 3px solid ${color} ;" class="poke-card-big-menu d-flex justify-content-between">
             <div class="poke-card-big-menu-item" id="about" onclick="loadMenuContent(${i},'about')">About</div>
             <div class="poke-card-big-menu-item" id="base-stats" onclick="loadMenuContent(${i},'base-stats')">Base Stats</div>
-            <div class="poke-card-big-menu-item" id="evolution" onclick="loadMenuContent(${i},'evolution')">Evolution</div>
+            <!--<div class="poke-card-big-menu-item" id="evolution" onclick="loadMenuContent(${i},'evolution')">Evolution</div>-->
             <div class="poke-card-big-menu-item" id="moves" onclick="loadMenuContent(${i},'moves')">Moves</div>
         </div>
 
