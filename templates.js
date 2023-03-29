@@ -52,7 +52,11 @@ function bigCardHtml(i, currentPokemon) {
         <div style="border-bottom: 3px solid ${color} ;" class="poke-card-big-menu d-flex justify-content-between">
             <div class="poke-card-big-menu-item" id="about" onclick="loadMenuContent(${i},'about')">About</div>
             <div class="poke-card-big-menu-item" id="base-stats" onclick="loadMenuContent(${i},'base-stats')">Base Stats</div>
-            <!--<div class="poke-card-big-menu-item" id="evolution" onclick="loadMenuContent(${i},'evolution')">Evolution</div>-->
+            
+            <!-- TODO: either implement completely or remove it
+                <div class="poke-card-big-menu-item" id="evolution" onclick="loadMenuContent(${i},'evolution')">Evolution</div>
+            -->
+            
             <div class="poke-card-big-menu-item" id="moves" onclick="loadMenuContent(${i},'moves')">Moves</div>
         </div>
 
@@ -172,7 +176,7 @@ function menuContentBaseStatsHtml(currentPokemon) {
 }
 
 
-
+/* TODO: either implement completely or remove
 function menuContentEvolutionHtml(currentPokemon) {
     return (
         `
@@ -180,7 +184,7 @@ function menuContentEvolutionHtml(currentPokemon) {
         `
     );
 }
-
+*/
 
 function menuContentMovesHtml(currentPokemon) {
     return (

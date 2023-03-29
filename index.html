@@ -18,15 +18,18 @@
     <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="container-fluid">
-            <div onclick="window.location.reload()">
-                <a class="navbar-brand" href="#">
+            <div class="mobile-nav d-flex justify-content-between">
+                <a onclick="window.location.reload()"  class="navbar-brand" href="#">
                     <img src="/img/pokeball.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-center">
                     PokeDex
                 </a>
+                <div onclick="openBurgerMenu()" id="burger-menu">
+                    <img src="img/burger-menu.png" alt="">
+                </div>
             </div>
             
 
-            <form class="d-flex nav-right-mobile" role="search">
+            <form id="search-form" class="d-none d-flex nav-right-mobile" role="search">
                 <input id="poke-search" class="form-control " type="search" placeholder="Search"
                     aria-label="Search">
                 <button onclick="searchThroughPokemon()" type="button" class="btn btn-outline-light mx-2">Search(Loaded)</button>

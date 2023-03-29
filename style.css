@@ -63,6 +63,10 @@ nav {
     color: #fff;
 }
 
+#burger-menu {
+    display: none;
+}
+
 /* FOOTER */
 
 footer {
@@ -364,14 +368,35 @@ td {
 }
 
 @media(max-width: 500px){
-    .nav-right-mobile {
+    #burger-menu {
+        display: block;
         display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    #burger-menu img {
+        height: 40px;
+    }
+
+    .mobile-nav{
+        width: 80%;
+    }
+
+    .nav-right-mobile {
+        /* display: none!important; */
         flex-direction: column;
         align-items: center;
     }
 
-    #poke-search {
-        width: 200px;
+    .nav-right-mobile button {
+        margin-top: 5px;
+        width: 300px
+    }
+
+    .mx-2{
+        margin-left: 0!important;
+        margin-right: 0!important;
     }
 
     button{
@@ -379,7 +404,7 @@ td {
     }
 
     #all-pokemon {
-        padding-top: 185px;
+        padding-top: 80px;
     }
 
     .hide-500 {
@@ -424,6 +449,9 @@ td {
 
 
 @media(max-width: 365px){
+    .nav-right-mobile button {
+        width: 220px
+    }
     
     .in-card-btn-left {
         top: 170px;

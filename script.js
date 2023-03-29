@@ -260,9 +260,12 @@ function returnMenuContent(menu, menuContent, currentPokemon) {
         menuContent.innerHTML = menuContentAboutHtml(currentPokemon);
     } else if (menu == 'base-stats') {
         menuContent.innerHTML = menuContentBaseStatsHtml(currentPokemon);
-    } else if (menu == 'evolution') {
+    }
+     /*else if (menu == 'evolution') {
+        TODO: either implement it or remove completely
         menuContent.innerHTML = menuContentEvolutionHtml(currentPokemon);
-    } else if (menu == 'moves') {
+    }*/
+     else if (menu == 'moves') {
         menuContent.innerHTML = menuContentMovesHtml(currentPokemon);
     }
 }
@@ -274,6 +277,16 @@ function closePokemonCard() {
 
 
 // GENERAL FUNCTIONS ==============================================================================
+function openBurgerMenu(){
+    let burgerMenuBtnClasses = document.getElementById('search-form').classList; 
+    
+    if(burgerMenuBtnClasses.contains('d-none')){
+        burgerMenuBtnClasses.remove('d-none');
+    }else{
+        burgerMenuBtnClasses.add('d-none');
+    }
+}
+
 function pokeIdNr(i) {
     let str = i.toString();
     while (str.length < 4) str = "0" + str;
