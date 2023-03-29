@@ -24,14 +24,14 @@ function bigCardHtml(i, currentPokemon) {
     let color = colors[0][currentPokemon['types'][0]['type']['name']][0];
     return (
         `
-        <button class="hide-500px" style="background-color:${color}" onclick="loadPreviousPokemon(${i})" id = "previous-pokemon"> < </button>
-        <button class="hide-500px" style="background-color:${color}" onclick="loadNextPokemon(${i})" id = "next-pokemon"> > </button>
+        <button class="hide-500" style="background-color:${color}" onclick="loadPreviousPokemon(${i})" id = "previous-pokemon"> < </button>
+        <button class="hide-500" style="background-color:${color}" onclick="loadNextPokemon(${i})" id = "next-pokemon"> > </button>
 
         <img class="poke-card-big-bg-img" src="img/pokeball-bg-4.png">
 
         <div id="poke-card-big-${i}" class="poke-card-big-bg">
-        <button  style="background-color:${color}" onclick="loadPreviousPokemon(${i})" id = "previous-pokemon"> < </button>
-        <button  style="background-color:${color}" onclick="loadNextPokemon(${i})" id = "next-pokemon"> > </button>
+        <button class="in-card-btn in-card-btn-left" style="background-color:${color}" onclick="loadPreviousPokemon(${i})"> < </button>
+        <button class="in-card-btn in-card-btn-right" style="background-color:${color}" onclick="loadNextPokemon(${i})"> > </button>
             <div class="d-flex justify-content-between align-items-center">
                 <img onclick="closePokemonCard()" class="icons" src="img/arrow-left.png">
                 <img onclick="comingSoon()" class="icons" src="img/heart-empty.png">
