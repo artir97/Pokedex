@@ -3,7 +3,6 @@ let pokemon = [];
 let allPokemonUrls = [];
 let currentPokemon;
 let pokemonToLoad = 50;
-
 let urlAllPokemon = 'https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0';
 
 
@@ -99,7 +98,7 @@ function returnSearch() {
 function showMiniCards(i) {
     document.getElementById('all-pokemon').innerHTML += miniCardHtml(i, currentPokemon);
     renderBackgrounds(i, currentPokemon);
-    renderBackgroundsType(i, currentPokemon);
+    // renderBackgroundsType(i, currentPokemon);
 }
 
 
@@ -161,19 +160,14 @@ async function searchThroughApi(pokemonShown, allPokemon, search) {
 function createAndShowSearchedMiniCards(pokemonShown, i, currentPokemon) {
     pokemonShown.innerHTML += miniCardHtml(i, currentPokemon);
     renderBackgrounds(i, currentPokemon);
-    renderBackgroundsType(i, currentPokemon);
 }
 
 
 function renderBackgrounds(i, currentPokemon) {
-    let { currentPokemonId, currentBackground } = initVariablesRenderBackgrounds(currentPokemon, i);
+    let { currentPokemonId, currentBackground, currentFirstTypeId, currentBackgroundType, currentSecondTypeId }
+        = initVariablesRenderBackgrounds(currentPokemon, i);
 
     currentPokemonId.style = 'background-color:' + currentBackground;
-}
-
-function renderBackgroundsType(i, currentPokemon) {
-    let { currentFirstTypeId, currentBackgroundType, currentSecondTypeId } = initVariablesRenderBackgroundsType(currentPokemon, i);
-
     currentFirstTypeId.style = 'background-color:' + currentBackgroundType;
     if (currentPokemon['types'].length > 1) {
         currentSecondTypeId.style = 'background-color:' + currentBackgroundType;
@@ -183,18 +177,14 @@ function renderBackgroundsType(i, currentPokemon) {
 
 function initVariablesRenderBackgrounds(currentPokemon, i) {
     let currentPokemonType = currentPokemon['types'][0]['type']['name'];
-    let currentBackground = colors[0][currentPokemonType][0];
+
     let currentPokemonId = document.getElementById(`poke-${i}`);
-    return { currentPokemonId, currentBackground };
-}
-
-
-function initVariablesRenderBackgroundsType(currentPokemon, i) {
-    let currentPokemonType = currentPokemon['types'][0]['type']['name'];
     let currentFirstTypeId = document.getElementById(`first-type-${i}`);
     let currentSecondTypeId = document.getElementById(`second-type-${i}`);
+    let currentBackground = colors[0][currentPokemonType][0];
     let currentBackgroundType = colors[0][currentPokemonType][1];
-    return { currentFirstTypeId, currentBackgroundType, currentSecondTypeId };
+
+    return { currentPokemonId, currentFirstTypeId, currentBackgroundType, currentSecondTypeId, currentBackground };
 }
 
 
@@ -202,12 +192,13 @@ function baseStats(currentPokemon) {
     let maxPoints = 120;
     let maxPointsTotal = 720;
     let totalPoints = 0;
-    let { hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent } = initBaseStats(currentPokemon, maxPoints);
+    let { hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent }
+        = initBaseStats(currentPokemon, maxPoints);
 
-    for(let i = 0; i < currentPokemon['stats'].length; i++){
+    for (let i = 0; i < currentPokemon['stats'].length; i++) {
         totalPoints += currentPokemon['stats'][i]['base_stat']
     }
-    
+
     let totalPercent = (totalPoints / maxPointsTotal).toFixed(2) * 100;
     let colorBar = colors[0][currentPokemon['types'][0]['type']['name']][0];
     return { hpPercent, colorBar, atkPercent, defPercent, spAPercent, spDPercent, spdPercent, totalPoints, totalPercent };
@@ -224,6 +215,7 @@ function initBaseStats(currentPokemon, maxPoints) {
     return { hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent };
 }
 
+
 function createBigPokemonCard(i, currentPokemon) {
     document.getElementById('poke-card-big').innerHTML = bigCardHtml(i, currentPokemon);
     document.querySelector('.poke-card-big').classList.remove('d-none');
@@ -232,7 +224,7 @@ function createBigPokemonCard(i, currentPokemon) {
 
 function addColors(i, colorCard, colorType, currentPokemon) {
     document.getElementById(`poke-card-big-${i}`).style = 'background-color:' + colorCard;
-    
+
     document.getElementById(`first-type-big-${i}`).style = 'background-color:' + colorType;
     if (currentPokemon['types'].length > 1) {
         document.getElementById(`second-type-big-${i}`).style = 'background-color:' + colorType;
@@ -260,12 +252,7 @@ function returnMenuContent(menu, menuContent, currentPokemon) {
         menuContent.innerHTML = menuContentAboutHtml(currentPokemon);
     } else if (menu == 'base-stats') {
         menuContent.innerHTML = menuContentBaseStatsHtml(currentPokemon);
-    }
-     /*else if (menu == 'evolution') {
-        TODO: either implement it or remove completely
-        menuContent.innerHTML = menuContentEvolutionHtml(currentPokemon);
-    }*/
-     else if (menu == 'moves') {
+    } else if (menu == 'moves') {
         menuContent.innerHTML = menuContentMovesHtml(currentPokemon);
     }
 }
@@ -277,13 +264,13 @@ function closePokemonCard() {
 
 
 // GENERAL FUNCTIONS ==============================================================================
-function openBurgerMenu(){
-    let burgerMenuBtnClasses = document.getElementById('search-form').classList; 
-    
-    if(burgerMenuBtnClasses.contains('d-none')){
-        burgerMenuBtnClasses.remove('d-none');
-    }else{
-        burgerMenuBtnClasses.add('d-none');
+function openBurgerMenu() {
+    let burgerMenuBtnClasses = document.getElementById('search-form').classList;
+
+    if (burgerMenuBtnClasses.contains('d-none-mobile')) {
+        burgerMenuBtnClasses.remove('d-none-mobile');
+    } else {
+        burgerMenuBtnClasses.add('d-none-mobile');
     }
 }
 
@@ -306,7 +293,6 @@ function capitalizeFirstLetter(string) {
 
 function renderAll() {
     renderAllPokemon();
-    renderBackgroundsType();
     renderBackgrounds();
     loadAllPokemon();
 }

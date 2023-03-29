@@ -411,6 +411,10 @@ td {
         display: none!important;
     }
 
+    .d-none-mobile {
+        display: none!important;
+    }
+
     .in-card-btn{
         display: block;
         position: absolute;
