@@ -67,6 +67,10 @@ nav {
     display: none;
 }
 
+.home:hover {
+    text-decoration: underline;
+}
+
 /* FOOTER */
 
 footer {

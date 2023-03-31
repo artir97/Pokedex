@@ -29,7 +29,6 @@ async function loadPokemon() {
         await loadOnePokemon(i);
     }
     document.getElementById('load-more-pokemon-btn').classList.remove('d-none');
-
 }
 
 
@@ -98,7 +97,6 @@ function returnSearch() {
 function showMiniCards(i) {
     document.getElementById('all-pokemon').innerHTML += miniCardHtml(i, currentPokemon);
     renderBackgrounds(i, currentPokemon);
-    // renderBackgroundsType(i, currentPokemon);
 }
 
 
@@ -108,6 +106,7 @@ async function openPokemonCard(i) {
 
     createBigPokemonCard(i, currentPokemon);
     addColors(i, colorCard, colorType, currentPokemon);
+    hideButtonFirstPokemon(currentPokemon);
 }
 
 
@@ -175,50 +174,21 @@ function renderBackgrounds(i, currentPokemon) {
 }
 
 
-function initVariablesRenderBackgrounds(currentPokemon, i) {
-    let currentPokemonType = currentPokemon['types'][0]['type']['name'];
-
-    let currentPokemonId = document.getElementById(`poke-${i}`);
-    let currentFirstTypeId = document.getElementById(`first-type-${i}`);
-    let currentSecondTypeId = document.getElementById(`second-type-${i}`);
-    let currentBackground = colors[0][currentPokemonType][0];
-    let currentBackgroundType = colors[0][currentPokemonType][1];
-
-    return { currentPokemonId, currentFirstTypeId, currentBackgroundType, currentSecondTypeId, currentBackground };
-}
-
-
-function baseStats(currentPokemon) {
-    let maxPoints = 120;
-    let maxPointsTotal = 720;
-    let totalPoints = 0;
-    let { hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent }
-        = initBaseStats(currentPokemon, maxPoints);
-
-    for (let i = 0; i < currentPokemon['stats'].length; i++) {
-        totalPoints += currentPokemon['stats'][i]['base_stat']
-    }
-
-    let totalPercent = (totalPoints / maxPointsTotal).toFixed(2) * 100;
-    let colorBar = colors[0][currentPokemon['types'][0]['type']['name']][0];
-    return { hpPercent, colorBar, atkPercent, defPercent, spAPercent, spDPercent, spdPercent, totalPoints, totalPercent };
-}
-
-
-function initBaseStats(currentPokemon, maxPoints) {
-    let hpPercent = ((currentPokemon['stats'][0]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let atkPercent = ((currentPokemon['stats'][1]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let defPercent = ((currentPokemon['stats'][2]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let spAPercent = ((currentPokemon['stats'][3]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let spDPercent = ((currentPokemon['stats'][4]['base_stat']) / maxPoints).toFixed(2) * 100;
-    let spdPercent = ((currentPokemon['stats'][5]['base_stat']) / maxPoints).toFixed(2) * 100;
-    return { hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent };
-}
-
-
+// BIG POKEMON CARD
 function createBigPokemonCard(i, currentPokemon) {
     document.getElementById('poke-card-big').innerHTML = bigCardHtml(i, currentPokemon);
     document.querySelector('.poke-card-big').classList.remove('d-none');
+}
+
+
+function hideButtonFirstPokemon(currentPokemon){
+    let leftBtn = document.getElementById('previous-pokemon');
+    let leftBtnInCard = document.querySelector('.in-card-btn-left');
+
+    if(currentPokemon.id == 1){
+        leftBtn.classList.add('d-none');
+        leftBtnInCard.classList.add('d-none');
+    }
 }
 
 
@@ -229,13 +199,6 @@ function addColors(i, colorCard, colorType, currentPokemon) {
     if (currentPokemon['types'].length > 1) {
         document.getElementById(`second-type-big-${i}`).style = 'background-color:' + colorType;
     }
-}
-
-
-function getColors(currentPokemon) {
-    let colorCard = colors[0][currentPokemon['types'][0]['type']['name']][0];
-    let colorType = colors[0][currentPokemon['types'][0]['type']['name']][1];
-    return { colorCard, colorType };
 }
 
 
@@ -273,6 +236,7 @@ function openBurgerMenu() {
         burgerMenuBtnClasses.add('d-none-mobile');
     }
 }
+
 
 function pokeIdNr(i) {
     let str = i.toString();
