@@ -181,11 +181,11 @@ function createBigPokemonCard(i, currentPokemon) {
 }
 
 
-function hideButtonFirstPokemon(currentPokemon){
+function hideButtonFirstPokemon(currentPokemon) {
     let leftBtn = document.getElementById('previous-pokemon');
     let leftBtnInCard = document.querySelector('.in-card-btn-left');
 
-    if(currentPokemon.id == 1){
+    if (currentPokemon.id == 1) {
         leftBtn.classList.add('d-none');
         leftBtnInCard.classList.add('d-none');
     }

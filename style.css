@@ -358,7 +358,7 @@ td {
     }
 }
 
-@media(max-width: 650px){
+@media(max-width: 650px) {
 
     .container-fluid {
         display: flex;
@@ -371,7 +371,7 @@ td {
 
 }
 
-@media(max-width: 500px){
+@media(max-width: 500px) {
     #burger-menu {
         display: block;
         display: flex;
@@ -383,7 +383,7 @@ td {
         height: 40px;
     }
 
-    .mobile-nav{
+    .mobile-nav {
         width: 80%;
     }
 
@@ -398,12 +398,12 @@ td {
         width: 300px
     }
 
-    .mx-2{
-        margin-left: 0!important;
-        margin-right: 0!important;
+    .mx-2 {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
-    button{
+    button {
         width: 200px;
     }
 
@@ -412,14 +412,14 @@ td {
     }
 
     .hide-500 {
-        display: none!important;
+        display: none !important;
     }
 
     .d-none-mobile {
-        display: none!important;
+        display: none !important;
     }
 
-    .in-card-btn{
+    .in-card-btn {
         display: block;
         position: absolute;
         height: 40px;
@@ -449,18 +449,18 @@ td {
 }
 
 
-@media(max-width: 400px){
+@media(max-width: 400px) {
     .none {
         display: none;
     }
 }
 
 
-@media(max-width: 365px){
+@media(max-width: 365px) {
     .nav-right-mobile button {
         width: 220px
     }
-    
+
     .in-card-btn-left {
         top: 170px;
         left: 15px;
@@ -470,9 +470,11 @@ td {
         top: 170px;
         right: 15px;
     }
+
     .poke-card-big {
         width: 270px;
     }
+
     #poke-card-big-img {
         height: 150px;
     }

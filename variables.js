@@ -3,7 +3,7 @@ function baseStats(currentPokemon) {
     let maxPointsTotal = 720;
     let totalPoints = 0;
     let { hpPercent, atkPercent, defPercent, spAPercent, spDPercent, spdPercent } = initBaseStats(currentPokemon, maxPoints);
-    let totalPercent = 0; 
+    let totalPercent = 0;
     let colorBar = colors[0][currentPokemon['types'][0]['type']['name']][0];
 
     for (let i = 0; i < currentPokemon['stats'].length; i++) {

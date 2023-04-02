@@ -9,7 +9,7 @@ let colors = [
         'poison': ['#9f5bba', '#b784cb'],
         'electric': ['#ffce4b', '#ffda77'],
         'ground': ['#ca8179', '#d7a09a'],
-        'fighting': ['#e8121a','#d45f65'],
+        'fighting': ['#e8121a', '#d45f65'],
         'psychic': ['#ed0f64', '#f55792'],
         'rock': ['#786b3f', '#b4a272'],
         'ice': ['#1a94a3', '#66d1e5'],
